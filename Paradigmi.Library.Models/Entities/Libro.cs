@@ -1,26 +1,28 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Paradigmi.Library.Models.Entities
 {
-    public class Book
+    public class Libro
     {
-        public Book() { }
-
-        public Book(string name, string author, DateTime publicationDate, string editor, HashSet<Category> categories)
+        public Libro() { }
+        public Libro(string Nome, string Autore, DateTime DataPubblicazione, string Editore, HashSet<Category> Categorie)
         {
-            Name = name;
-            Author = author;
-            PublicationDate = publicationDate;
-            Editor = editor;
-            Categories = categories ?? new HashSet<Category>();
+            this.Name = Nome;
+            this.Author = Autore;
+            this.Categorie = Categorie;
+            this.DataPubblicazione = DataPubblicazione;
+            this.Editore = Editore;
         }
+        public int IdLibro { get; set; }
+        public string Nome { get; set; } = string.Empty;
+        public string Autore { get; set; } = string.Empty;
+        public DateTime DataPubblicazione { get; set; }
+        public string Editore { get; set; } = string.Empty;
+        public virtual ICollection<Category> Categorie { get; set; } = new HashSet<Category>();
 
-        public int IdBook { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string Author { get; set; } = string.Empty;
-        public DateTime PublicationDate { get; set; }
-        public string Editor { get; set; } = string.Empty;
-        public virtual ICollection<Category> Categories { get; set; } = new HashSet<Category>();
     }
 }
